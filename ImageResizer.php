@@ -36,19 +36,27 @@ class ResizeImage
         }
 
         if ($ratioWidth > $ratioHeight) {
-            return [
-                "width" => $input_Image_A["width"],
-                "height" =>
-                    ($input_Image_B["height"] * $input_Image_A["width"]) /
-                    $input_Image_B["width"],
-            ];
+            if($input_Image_A["width"]<=$input_Image_B["width"]){
+                return [
+                  "width" => $input_Image_A["width"],
+                  "height" =>
+                      ($input_Image_B["height"] * $input_Image_A["width"]) /
+                      $input_Image_B["width"],
+              ];
+            }else{
+              return $input_Image_B;
+            }
         } else {
-            return [
-                "width" =>
-                    ($input_Image_B["width"] * $input_Image_A["height"]) /
-                    $input_Image_B["height"],
-                "height" => $input_Image_A["height"],
-            ];
+            if($input_Image_A["height"]<=$input_Image_B["height"]){
+              return [
+                  "width" =>
+                      ($input_Image_B["width"] * $input_Image_A["height"]) /
+                      $input_Image_B["height"],
+                  "height" => $input_Image_A["height"],
+              ];  
+            }else{
+              return $input_Image_B;
+            }
         }
     }
 }
